@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'timer_page.dart';
 
 void main() {
   runApp(const GiatGymApp());
@@ -19,11 +20,19 @@ class GiatGymApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  Widget tombol(String nama) {
+  Widget tombol(BuildContext context, String nama) {
     return Container(
       margin: const EdgeInsets.all(10),
       width: double.infinity,
-      child: ElevatedButton(onPressed: () {}, child: Text(nama)),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => TimerPage(nama: nama)),
+          );
+        },
+        child: Text(nama),
+      ),
     );
   }
 
@@ -38,9 +47,9 @@ class HomePage extends StatelessWidget {
             "Pilih Latihan",
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
-          tombol("Plank"),
-          tombol("Squat"),
-          tombol("Jumping Jack"),
+          tombol(context, "Plank"),
+          tombol(context, "Squat"),
+          tombol(context, "Jumping Jack"),
         ],
       ),
     );
