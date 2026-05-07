@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'result_page.dart';
 
 class TimerPage extends StatefulWidget {
   final String nama;
@@ -25,6 +26,11 @@ class _TimerPageState extends State<TimerPage> {
         });
       } else {
         t.cancel();
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => ResultPage(nama: widget.nama)),
+        );
       }
     });
   }
