@@ -25,6 +25,13 @@ class HomePage extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       width: double.infinity,
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.orange,
+          padding: const EdgeInsets.symmetric(vertical: 18),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
         onPressed: () {
           Navigator.push(
             context,
@@ -40,7 +47,14 @@ class HomePage extends StatelessWidget {
             ),
           );
         },
-        child: Text(nama),
+        child: Text(
+          nama,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
@@ -48,18 +62,36 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("GiatGym")),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          const Text(
-            "Pilih Latihan",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.orange,
+        title: const Text(
+          "GiatGym 💪🏻",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.orangeAccent, Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          tombol(context, "Plank"),
-          tombol(context, "Squat"),
-          tombol(context, "Jumping Jack"),
-        ],
+        ),
+
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            const Text(
+              "Pilih Latihan",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            tombol(context, "Plank"),
+            tombol(context, "Squat"),
+            tombol(context, "Jumping Jack"),
+          ],
+        ),
       ),
     );
   }
