@@ -4,20 +4,23 @@ import 'result_page.dart';
 
 class TimerPage extends StatefulWidget {
   final String nama;
+  final int durasi;
 
-  const TimerPage({super.key, required this.nama});
+  const TimerPage({super.key, required this.nama, required this.durasi});
 
   @override
   State<TimerPage> createState() => _TimerPageState();
 }
 
 class _TimerPageState extends State<TimerPage> {
-  int waktu = 10;
+  late int waktu;
   Timer? timer;
 
   @override
   void initState() {
     super.initState();
+
+    waktu = widget.durasi;
 
     timer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (waktu > 0) {

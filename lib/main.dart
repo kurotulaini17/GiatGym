@@ -28,7 +28,16 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => TimerPage(nama: nama)),
+            MaterialPageRoute(
+              builder: (_) => TimerPage(
+                nama: nama,
+                durasi: nama == "Plank"
+                    ? 30
+                    : nama == "Squat"
+                    ? 45
+                    : 60,
+              ),
+            ),
           );
         },
         child: Text(nama),
