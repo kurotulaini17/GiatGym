@@ -20,39 +20,57 @@ class GiatGymApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  Widget tombol(BuildContext context, String nama) {
+  Widget tombol(BuildContext context, String nama, IconData icon) {
     return Container(
-      margin: const EdgeInsets.all(10),
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.orange,
-          padding: const EdgeInsets.symmetric(vertical: 18),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => TimerPage(
-                nama: nama,
-                durasi: nama == "Plank"
-                    ? 30
-                    : nama == "Squat"
-                    ? 45
-                    : 60,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+
+          child: Row(
+            children: [
+              Icon(icon, size: 50, color: Colors.orange),
+
+              const SizedBox(width: 20),
+
+              Expanded(
+                child: Text(
+                  nama,
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
-          );
-        },
-        child: Text(
-          nama,
-          style: const TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => TimerPage(
+                        nama: nama,
+                        durasi: nama == "Plank"
+                            ? 30
+                            : nama == "Squat"
+                            ? 45
+                            : 60,
+                      ),
+                    ),
+                  );
+                },
+
+                child: const Text(
+                  "Mulai",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -87,9 +105,9 @@ class HomePage extends StatelessWidget {
               "Pilih Latihan",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            tombol(context, "Plank"),
-            tombol(context, "Squat"),
-            tombol(context, "Jumping Jack"),
+            tombol(context, "Plank", Icons.fitness_center),
+            tombol(context, "Squat", Icons.sports_gymnastics),
+            tombol(context, "Jumping Jack", Icons.directions_run),
           ],
         ),
       ),
