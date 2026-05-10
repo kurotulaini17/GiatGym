@@ -14,6 +14,7 @@ class TimerPage extends StatefulWidget {
 
 class _TimerPageState extends State<TimerPage> {
   late int waktu;
+  late int totalWaktu;
   Timer? timer;
 
   @override
@@ -21,6 +22,7 @@ class _TimerPageState extends State<TimerPage> {
     super.initState();
 
     waktu = widget.durasi;
+    totalWaktu = widget.durasi;
 
     timer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (waktu > 0) {
@@ -70,6 +72,17 @@ class _TimerPageState extends State<TimerPage> {
             ),
 
             const SizedBox(height: 30),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+
+              child: LinearProgressIndicator(
+                value: waktu / totalWaktu,
+                minHeight: 15,
+                backgroundColor: Colors.white,
+                valueColor: const AlwaysStoppedAnimation<Color>(Colors.orange),
+              ),
+            ),
 
             Text(
               "$waktu",
