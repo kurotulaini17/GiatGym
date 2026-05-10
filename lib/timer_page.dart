@@ -16,6 +16,7 @@ class _TimerPageState extends State<TimerPage> {
   late int waktu;
   late int totalWaktu;
   Timer? timer;
+  bool berjalan = true;
 
   @override
   void initState() {
@@ -91,6 +92,54 @@ class _TimerPageState extends State<TimerPage> {
                 fontWeight: FontWeight.bold,
                 color: Colors.orange,
               ),
+            ),
+
+            const SizedBox(height: 30),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (berjalan) {
+                      timer?.cancel();
+
+                      setState(() {
+                        berjalan = false;
+                      });
+                    } else {
+                      timer = Timer.periodic(const Duration(seconds: 1), (t) {
+                        if (waktu > 0) {
+                          setState(() {
+                            waktu--;
+                          });
+                        }
+                      });
+
+                      setState(() {
+                        berjalan = true;
+                      });
+                    }
+                  },
+
+                  child: Text(berjalan ? "Pause" : "Resume"),
+                ),
+
+                const SizedBox(width: 20),
+
+                ElevatedButton(
+                  onPressed: () {
+                    timer?.cancel();
+
+                    setState(() {
+                      waktu = totalWaktu;
+                      berjalan = false;
+                    });
+                  },
+
+                  child: const Text("Reset"),
+                ),
+              ],
             ),
           ],
         ),
