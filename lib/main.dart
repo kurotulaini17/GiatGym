@@ -98,17 +98,36 @@ class HomePage extends StatelessWidget {
           ),
         ),
 
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            const Text(
-              "Pilih Latihan",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            tombol(context, "Plank", Icons.fitness_center),
-            tombol(context, "Squat", Icons.sports_gymnastics),
-            tombol(context, "Jumping Jack", Icons.directions_run),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Icon(Icons.fitness_center, size: 100, color: Colors.orange),
+
+              const SizedBox(height: 20),
+
+              const Text(
+                "GiatGym",
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+
+              const SizedBox(height: 30),
+
+              const Text(
+                "Aplikasi latihan sederhana di rumah",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, color: Colors.black54),
+              ),
+
+              const Text(
+                "Pilih Latihan",
+
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              tombol(context, "Plank", Icons.fitness_center),
+              tombol(context, "Squat", Icons.sports_gymnastics),
+              tombol(context, "Jumping Jack", Icons.directions_run),
+            ],
+          ),
         ),
       ),
     );
