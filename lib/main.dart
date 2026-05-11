@@ -51,6 +51,13 @@ class HomePage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
 
                 onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Memulai latihan $nama 💪🏻"),
+                      duration: const Duration(seconds: 1),
+                    ),
+                  );
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
