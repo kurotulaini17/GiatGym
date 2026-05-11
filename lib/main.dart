@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'timer_page.dart';
+import 'splash_page.dart';
 
 void main() {
   runApp(const GiatGymApp());
@@ -12,7 +13,7 @@ class GiatGymApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SplashPage(),
     );
   }
 }
