@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 class ResultPage extends StatelessWidget {
   final String nama;
@@ -8,50 +9,61 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Selesai")),
-      body: Container(
-        width: double.infinity,
+      backgroundColor: Colors.orangeAccent,
 
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.orangeAccent, Colors.white],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.check_circle, size: 120, color: Colors.green),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
 
-            const SizedBox(height: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.check_circle, size: 120, color: Colors.white),
 
-            Text(
-              "$nama selesai 💪🏻",
-              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
+              const SizedBox(height: 30),
 
-            const SizedBox(height: 30),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 15,
+              const Text(
+                "Latihan Selesai!",
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
 
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              const SizedBox(height: 20),
 
-              child: const Text(
-                "Kembali",
-                style: TextStyle(fontSize: 20, color: Colors.white),
+              Text(
+                "Kamu telah menyelesaikan latihan $nama 💪🏻",
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 22, color: Colors.white),
               ),
-            ),
-          ],
+
+              const SizedBox(height: 40),
+
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const HomePage()),
+                  );
+                },
+
+                icon: const Icon(Icons.home),
+
+                label: const Text("Kembali ke Home"),
+
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 15,
+                  ),
+
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
